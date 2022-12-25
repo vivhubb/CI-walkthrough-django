@@ -19,11 +19,6 @@ def add_item(request):
         if form.is_valid():
             form.save()
             return redirect('get_todo_list')
-        name = request.POST.get('item_name')
-        done = 'done' in request.POST
-        Item.objects.create(name=name, done=done)
-
-        return redirect('get_todo_list')
     form = ItemForm()
     context = {
         'form': form
